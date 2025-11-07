@@ -1,0 +1,134 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import ThreeDApp from './components/ThreeDApp';
+
+// صفحات اصلی - بعداً با Lazy Loading بهینه می‌کنیم
+function HomePage() {
+  return (
+    <div className="homepage">
+      <h1>🚀 به پلتفرم تتراشاپ خوش آمدید</h1>
+      <p>مجموعه کامل ابزارهای نرم‌افزاری برای نیازهای مختلف</p>
+      
+      <div className="app-grid">
+        <a href="/shop" className="app-card">
+          <div className="app-icon">🛍️</div>
+          <h3>فروشگاه</h3>
+          <p>سیستم فروش آنلاین</p>
+        </a>
+        
+        <a href="/chess" className="app-card">
+          <div className="app-icon">♟️</div>
+          <h3>شطرنج</h3>
+          <p>بازی و آنالیز شطرنج</p>
+        </a>
+        
+        <a href="/quantum" className="app-card">
+          <div className="app-icon">📝</div>
+          <h3>نویسنده کوانتومی</h3>
+          <p>تولید محتوای پیشرفته</p>
+        </a>
+        
+        <a href="/nateg" className="app-card">
+          <div className="app-icon">🗣️</div>
+          <h3>نطق مصطلح</h3>
+          <p>ابزارهای گفتاری و کلامی</p>
+        </a>
+        
+        <a href="/aman" className="app-card">
+          <div className="app-icon">🔐</div>
+          <h3>آمان راز</h3>
+          <p>ابزارهای امنیتی و رمزنگاری</p>
+        </a>
+        
+        <a href="/writer" className="app-card">
+          <div className="app-icon">🤖</div>
+          <h3>نویسنده هوشمند</h3>
+          <p>هوش مصنوعی برای نویسندگی</p>
+        </a>
+        
+        <a href="/3d" className="app-card">
+          <div className="app-icon">🔄</div>
+          <h3>تبدیل 3D</h3>
+          <p>تبدیل فایل‌های سه‌بعدی</p>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+// صفحات موقت برای هر اپ
+function ShopApp() {
+  return (
+    <div className="app-page">
+      <h2>🛍️ فروشگاه تتراشاپ</h2>
+      <p>به زودی راه‌اندازی می‌شود...</p>
+      <a href="/">بازگشت به صفحه اصلی</a>
+    </div>
+  );
+}
+
+function ChessApp() {
+  return (
+    <div className="app-page">
+      <h2>♟️ شطرنج حرفه‌ای</h2>
+      <p>به زودی راه‌اندازی می‌شود...</p>
+      <a href="/">بازگشت به صفحه اصلی</a>
+    </div>
+  );
+}
+
+// بقیه کامپوننت‌ها به همین شکل...
+function QuantumWriterApp() {
+  return <div className="app-page"><h2>📝 نویسنده کوانتومی</h2><p>به زودی...</p><a href="/">بازگشت</a></div>;
+}
+
+function NategApp() {
+  return <div className="app-page"><h2>🗣️ نطق مصطلح</h2><p>به زودی...</p><a href="/">بازگشت</a></div>;
+}
+
+function AmanRazApp() {
+  return <div className="app-page"><h2>🔐 آمان راز</h2><p>به زودی...</p><a href="/">بازگشت</a></div>;
+}
+
+function SmartWriterApp() {
+  return <div className="app-page"><h2>🤖 نویسنده هوشمند</h2><p>به زودی...</p><a href="/">بازگشت</a></div>;
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <nav className="navbar">
+          <div className="nav-brand">
+            <a href="/">تتراشاپ ۱۰۰</a>
+          </div>
+          <div className="nav-links">
+            <a href="/shop">فروشگاه</a>
+            <a href="/chess">شطرنج</a>
+            <a href="/quantum">کوانتومی</a>
+            <a href="/nateg">نطق</a>
+            <a href="/aman">آمان</a>
+            <a href="/writer">هوشمند</a>
+            <a href="/3d">3D</a>
+          </div>
+        </nav>
+
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/shop" element={<ShopApp />} />
+            <Route path="/chess" element={<ChessApp />} />
+            <Route path="/quantum" element={<QuantumWriterApp />} />
+            <Route path="/nateg" element={<NategApp />} />
+            <Route path="/aman" element={<AmanRazApp />} />
+            <Route path="/writer" element={<SmartWriterApp />} />
+            <Route path="/3d" element={<ThreeDApp />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
